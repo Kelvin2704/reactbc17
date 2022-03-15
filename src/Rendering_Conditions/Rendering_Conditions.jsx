@@ -4,7 +4,7 @@ export default class Rendering_Conditions extends Component {
   /**
    * state là thuộc tính có sẵn của react class component để quản lý các giá trị thay đổi trên giao diện khi người dùng thao tác (event) */
 
-state ={
+state = {
     isLogin: false
 }
 
@@ -43,7 +43,7 @@ state ={
 
     let newState = {isLogin: true}
     this.setState(newState, ()=>{
-        console.log(this.state)
+        console.log("new state: ",this.state)
     })
     // this.render();
   };
