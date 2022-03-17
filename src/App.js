@@ -25,7 +25,7 @@ function App() {
       {/* <QuanLyDanhSachPhim/> */}
       {/* <DemoProps /> */}
       {/* <ShoesShop/> */}
-      {/* <BaiTapXemChiTietSP/> */}
+      <BaiTapXemChiTietSP/>
       <BaiTapThuKinh/>
     </div>
   );
