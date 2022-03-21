@@ -10,6 +10,7 @@ import DemoProps from "./Props/DemoProps/DemoProps";
 import ShoesShop from "./Props/ShoesShop/ShoesShop";
 import BaiTapXemChiTietSP from "./Props/BaiTapXemChiTietSP/BaiTapXemChiTietSP";
 import BaiTapThuKinh from "./BaiTapThuKinh/BaiTapThuKinh";
+import BTGioHangRedux from "./DemoRedux/BaiTapGioHangRedux/BTGioHangRedux";
 // import HeaderClass from "./components/HeaderClass";
 // import HeaderFunc from "./components/HeaderFunc";
 // import HomeComponent from "./components/BaiTapLayout/HomeComponent";
@@ -25,8 +26,9 @@ function App() {
       {/* <QuanLyDanhSachPhim/> */}
       {/* <DemoProps /> */}
       {/* <ShoesShop/> */}
-      <BaiTapXemChiTietSP/>
-      <BaiTapThuKinh/>
+      {/* <BaiTapXemChiTietSP/>
+      <BaiTapThuKinh/> */}
+      <BTGioHangRedux/>
     </div>
   );
 }
