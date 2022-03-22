@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     themGioHang: (sanPhamClick) => {
       const action = {
-        type: "THEM_GiO_HANG",
+        type: "THEM_GIO_HANG",
         sanPhamClick,
       };
       // Gửi dữ liệu lên redux
