@@ -12,6 +12,7 @@ import BaiTapXemChiTietSP from "./Props/BaiTapXemChiTietSP/BaiTapXemChiTietSP";
 import BaiTapThuKinh from "./BaiTapThuKinh/BaiTapThuKinh";
 import BTGioHangRedux from "./DemoRedux/BaiTapGioHangRedux/BTGioHangRedux";
 import GameXucXac from "./DemoRedux/GameXucXac/GameXucXac";
+import BaiTapQuanLyNguoiDung from "./ReactForm/BaiTapQuanLyNguoiDung/BaiTapQuanLyNguoiDung";
 // import HeaderClass from "./components/HeaderClass";
 // import HeaderFunc from "./components/HeaderFunc";
 // import HomeComponent from "./components/BaiTapLayout/HomeComponent";
@@ -30,7 +31,8 @@ function App() {
       {/* <BaiTapXemChiTietSP/>
       <BaiTapThuKinh/> */}
       {/* <BTGioHangRedux/> */}
-      <GameXucXac/>
+      {/* <GameXucXac/> */}
+      <BaiTapQuanLyNguoiDung/>
     </div>
   );
 }

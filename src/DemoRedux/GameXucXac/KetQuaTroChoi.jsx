@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class KetQuaTroChoi extends Component {
   render() {
     let { soBanThang, tongSoBanChoi, banChon } = this.props;
-    console.log("this.props", this.props);
+    console.log("Kết quả trò chơi", this.props);
     return (
       <div className="text-center container">
         <div className="display-4">
@@ -21,7 +21,17 @@ class KetQuaTroChoi extends Component {
         </div>
 
         <div className="display-4">
-          <button className="btn btn-success p-3" style={{ fontSize: 25 }}>
+          <button
+            className="btn btn-success p-3"
+            style={{ fontSize: 25 }}
+            onClick={() => {
+              const action = {
+                type: "PLAY_GAME",
+                tongSoBanChoi,
+              };
+              this.props.dispatch(action);
+            }}
+          >
             Play game
           </button>
         </div>
