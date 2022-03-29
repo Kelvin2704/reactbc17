@@ -18,18 +18,42 @@ class TableNguoiDung extends Component {
         </thead>
         <tbody>
           {this.props.mangNguoiDung.map((nguoiDung, index) => {
-            <tr key={index}>
-              <td>{nguoiDung.taiKhoan}</td>
-              <td>{nguoiDung.hoTen}</td>
-              <td>{nguoiDung.matKhau}</td>
-              <td>{nguoiDung.email}</td>
-              <td>{nguoiDung.soDienThoai}</td>
-              <td>{nguoiDung.loaiNguoiDung}</td>
-              <td>
-                <button className="btn btn-danger">Xóa</button>
-                <button className="btn btn-primary ml-2">Sửa</button>
-              </td>
-            </tr>;
+            return (
+              <tr key={index}>
+                <td>{nguoiDung.taiKhoan}</td>
+                <td>{nguoiDung.hoTen}</td>
+                <td>{nguoiDung.matKhau}</td>
+                <td>{nguoiDung.email}</td>
+                <td>{nguoiDung.soDienThoai}</td>
+                <td>{nguoiDung.maLoaiNguoiDung}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      const action = {
+                        type: "XOA_NGUOI_DUNG",
+                        taiKhoan: nguoiDung.taiKhoan,
+                      };
+                      this.props.dispatch(action);
+                    }}
+                  >
+                    Xóa
+                  </button>
+                  <button
+                    className="btn btn-primary ml-2"
+                    onClick={() => {
+                      const action = {
+                        type: "SUA_NGUOI_DUNG",
+                        nguoiDung: nguoiDung,
+                      };
+                      this.props.dispatch(action);
+                    }}
+                  >
+                    Sửa
+                  </button>
+                </td>
+              </tr>
+            );
           })}
         </tbody>
       </table>

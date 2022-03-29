@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class FormNguoiDung extends Component {
+class FormNguoiDung extends Component {
   state = {
     values: {
       taiKhoan: "",
@@ -58,7 +59,7 @@ export default class FormNguoiDung extends Component {
     //lấy ra this.state.errors kiểm tra
     let { errors, values } = this.state;
     for (let key in errors) {
-      //nếu như có 1 trường error nào không hợp lệ 
+      //nếu như có 1 trường error nào không hợp lệ
       if (errors[key] !== "") {
         valid = false;
       }
@@ -74,8 +75,14 @@ export default class FormNguoiDung extends Component {
       alert("dữ liệu không hợp lệ");
       return;
     }
+    const action = {
+      type: "THEM_NGUOI_DUNG",
+      nguoiDung: this.state.values,
+    };
+    this.props.dispatch(action);
   };
   render() {
+    let { taiKhoan, hoTen, matKhau, email, maLoaiNguoiDung, soDienThoai } = this.props.nguoiDungSua;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="card">
@@ -85,19 +92,19 @@ export default class FormNguoiDung extends Component {
               <div className="col-6">
                 <div className="form-group">
                   <p>Tài khoản</p>
-                  <input className="form-control" id="taiKhoan" name="taiKhoan" onChange={this.handleChangeInput} />
+                  <input value={taiKhoan} className="form-control" id="taiKhoan" name="taiKhoan" onChange={this.handleChangeInput} />
                   <p className="text-danger">{this.state.errors.taiKhoan}</p>
                 </div>
 
                 <div className="form-group">
                   <p>Họ Tên</p>
-                  <input className="form-control" id="hoTen" name="hoTen" onChange={this.handleChangeInput} />
+                  <input value={hoTen} className="form-control" id="hoTen" name="hoTen" onChange={this.handleChangeInput} />
                   <p className="text-danger">{this.state.errors.hoTen}</p>
                 </div>
 
                 <div className="form-group">
                   <p>Mật khẩu</p>
-                  <input className="form-control" id="matKhau" name="matKhau" onChange={this.handleChangeInput} />
+                  <input value={matKhau} className="form-control" id="matKhau" name="matKhau" onChange={this.handleChangeInput} />
                   <p className="text-danger">{this.state.errors.matKhau}</p>
                 </div>
               </div>
@@ -105,19 +112,19 @@ export default class FormNguoiDung extends Component {
               <div className="col-6">
                 <div className="form-group">
                   <p>Email</p>
-                  <input typeMeta="email" className="form-control" id="email" name="email" onChange={this.handleChangeInput} />
+                  <input value={email} typeMeta="email" className="form-control" id="email" name="email" onChange={this.handleChangeInput} />
                   <p className="text-danger">{this.state.errors.email}</p>
                 </div>
 
                 <div className="form-group">
                   <p>Số điện thoại</p>
-                  <input className="form-control" id="soDienThoai" name="soDienThoai" onChange={this.handleChangeInput} />
+                  <input value={soDienThoai} className="form-control" id="soDienThoai" name="soDienThoai" onChange={this.handleChangeInput} />
                   <p className="text-danger">{this.state.errors.soDienThoai}</p>
                 </div>
 
                 <div className="form-group">
                   <p>Loại người dùng</p>
-                  <select className="form-control" id="maLoaiNguoiDung" name="maLoaiNguoiDung" onChange={this.handleChangeInput}>
+                  <select value={maLoaiNguoiDung} className="form-control" id="maLoaiNguoiDung" name="maLoaiNguoiDung" onChange={this.handleChangeInput}>
                     <option>Quản trị</option>
                     <option>Người dùng</option>
                   </select>
@@ -136,3 +143,10 @@ export default class FormNguoiDung extends Component {
     );
   }
 }
+const mapStateToProps = (rootReducer) => {
+  return {
+    nguoiDungSua: rootReducer.quanLyNguoiDungReducer.nguoiDungSua
+  }
+}
+
+export default connect(mapStateToProps)(FormNguoiDung);
