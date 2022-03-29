@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class TableNguoiDung extends Component {
+class TableNguoiDung extends Component {
   render() {
     return (
       <table className="table">
@@ -16,20 +17,29 @@ export default class TableNguoiDung extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Tài khoản</td>
-            <td>Họ Tên</td>
-            <td>Mật khẩu</td>
-            <td>Email</td>
-            <td>Số điện tdoại</td>
-            <td>Loại người dùng</td>
-            <td>
+          {this.props.mangNguoiDung.map((nguoiDung, index) => {
+            <tr key={index}>
+              <td>{nguoiDung.taiKhoan}</td>
+              <td>{nguoiDung.hoTen}</td>
+              <td>{nguoiDung.matKhau}</td>
+              <td>{nguoiDung.email}</td>
+              <td>{nguoiDung.soDienThoai}</td>
+              <td>{nguoiDung.loaiNguoiDung}</td>
+              <td>
                 <button className="btn btn-danger">Xóa</button>
                 <button className="btn btn-primary ml-2">Sửa</button>
-            </td>
-          </tr>
+              </td>
+            </tr>;
+          })}
         </tbody>
       </table>
     );
   }
 }
+const mapStateToProps = (rootReducer) => {
+  return {
+    mangNguoiDung: rootReducer.quanLyNguoiDungReducer.mangNguoiDung,
+  };
+};
+
+export default connect(mapStateToProps)(TableNguoiDung);
