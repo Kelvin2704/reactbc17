@@ -8,7 +8,7 @@ const stateDefault = {
     hoTen: "",
     matKhau: "",
     email: "",
-    maLoaiNguoiDung: "",
+    maLoaiNguoiDung: "QuanTri",
     soDienThoai: "",
   },
 };
@@ -31,6 +31,18 @@ export const quanLyNguoiDungReducer = (state = stateDefault, action) => {
     case "SUA_NGUOI_DUNG": {
       state.nguoiDungSua = action.nguoiDung;
       return { ...state };
+    }
+    case "CAP_NHAT_THONG_TIN": {
+      let mangNguoiDung = [...state.mangNguoiDung];
+      let ndUpdate = mangNguoiDung.find((nguoiDung) => nguoiDung.taiKhoan === action.nguoiDung.taiKhoan);
+      if (ndUpdate) {
+        for (let key in ndUpdate) {
+          ndUpdate[key] = action.nguoiDung[key];
+        }
+      }
+      //cập nhật lại state
+      state.mangNguoiDung = mangNguoiDung;
+      return {...state};
     }
     default:
       return state;

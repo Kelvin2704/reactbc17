@@ -1,41 +1,28 @@
-import logo from "./logo.svg";
-import "./App.css";
-import DataBinding from "./DataBinding/DataBinding";
-import HandleEvent from "./HandleEvent/HandleEvent";
-import Rendering_Conditions from "./Rendering_Conditions/Rendering_Conditions";
-import Ex1StateDemo from "./StateDemo/Ex1StateDemo";
-import RenderWithMap from "./RenderWithMap/RenderWithMap";
-import QuanLyDanhSachPhim from "./RenderWithMap/QuanLyDanhSachPhim";
-import DemoProps from "./Props/DemoProps/DemoProps";
-import ShoesShop from "./Props/ShoesShop/ShoesShop";
-import BaiTapXemChiTietSP from "./Props/BaiTapXemChiTietSP/BaiTapXemChiTietSP";
-import BaiTapThuKinh from "./BaiTapThuKinh/BaiTapThuKinh";
-import BTGioHangRedux from "./DemoRedux/BaiTapGioHangRedux/BTGioHangRedux";
-import GameXucXac from "./DemoRedux/GameXucXac/GameXucXac";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import HeaderHome from "./Component/HeaderHome/HeaderHome";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import BaiTapQuanLyNguoiDung from "./ReactForm/BaiTapQuanLyNguoiDung/BaiTapQuanLyNguoiDung";
-import ReactLifeCycle from "./ReactLifeCycle/ReactLifeCycle";
-// import HeaderClass from "./components/HeaderClass";
-// import HeaderFunc from "./components/HeaderFunc";
-// import HomeComponent from "./components/BaiTapLayout/HomeComponent";
 
 function App() {
   return (
     <div className="App">
-      {/* <DataBinding /> */}
-      {/* <HandleEvent/> */}
-      {/* <Rendering_Conditions /> */}
-      {/* <Ex1StateDemo/> */}
-      {/* <RenderWithMap/> */}
-      {/* <QuanLyDanhSachPhim/> */}
-      {/* <DemoProps /> */}
-      {/* <ShoesShop/> */}
-      {/* <BaiTapXemChiTietSP/>
-      <BaiTapThuKinh/> */}
-      {/* <BTGioHangRedux/> */}
-      {/* <GameXucXac/> */}
-      {/* <BaiTapQuanLyNguoiDung/> */}
-      <ReactLifeCycle/>
+      <BaiTapQuanLyNguoiDung/>
     </div>
+    // <BrowserRouter>
+    // <HeaderHome/>
+    //   <Switch>
+    //     <Route exact path={"/home"} component={Home} />
+    //     <Route exact path={"/contact"} component={Contact} />
+    //     <Route exact path={"/login"} component={Login} />
+    //     <Route exact path={"/register"} component={Register} />
+    //     <Route exact path={"/About"} component={About} />
+    //     <Route exact path={""} component={Home} />
+    //   </Switch>
+    // </BrowserRouter>
   );
 }
 

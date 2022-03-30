@@ -81,8 +81,29 @@ class FormNguoiDung extends Component {
     };
     this.props.dispatch(action);
   };
+
+  // Can thiệp vào lifecycle khi props hoặc state thay đổi thì hàm này sẽ thực thi trước khi render
+  // static getDerivedStateFromProps(newProps, state) {
+  //   //Chỉ khi nào người dùng bấm nút sửa thì mới xử lý
+  //   if (state.values.taiKhoan !== newProps.nguoiDungSua.taiKhoan) {
+  //     console.log("newProps", newProps);
+  //     console.log("currentState", state);
+  //     //lấy dữ liệu từ newprops gán vào state => sau khi render dữ liệu được binding từ state
+  //     state.values = { ...newProps.nguoiDungSua };
+  //     console.log(state);
+  //   }
+  //   return state;
+  // }
+
+  //Chỉ chạy khi props thay đổi
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      values: newProps.nguoiDungSua, // khi props thay đổi gán newprops của nguoiDungSua vào values của state
+    });
+  }
+
   render() {
-    let { taiKhoan, hoTen, matKhau, email, maLoaiNguoiDung, soDienThoai } = this.props.nguoiDungSua;
+    let { taiKhoan, hoTen, matKhau, email, maLoaiNguoiDung, soDienThoai } = this.state.values; //thay đổi this.props.nguoiDungSua thành this.state.values để có thể sửa được value trong input
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="card">
@@ -136,6 +157,15 @@ class FormNguoiDung extends Component {
               <button className="btn btn-success" type="submit">
                 Đăng ký
               </button>
+              <button className="btn btn-primary ml-2" type="button" onClick={()=>{
+                //Đưa dữ liệu vê redux để thay đổi mảng người dùng
+                const action = {
+                  type: "CAP_NHAT_THONG_TIN",
+                  nguoiDung: this.state.values
+                }
+                //Đưa dữ liệu lên redux
+                this.props.dispatch(action)
+              }}>Cập nhật</button>
             </div>
           </div>
         </div>
@@ -145,8 +175,8 @@ class FormNguoiDung extends Component {
 }
 const mapStateToProps = (rootReducer) => {
   return {
-    nguoiDungSua: rootReducer.quanLyNguoiDungReducer.nguoiDungSua
-  }
-}
+    nguoiDungSua: rootReducer.quanLyNguoiDungReducer.nguoiDungSua,
+  };
+};
 
 export default connect(mapStateToProps)(FormNguoiDung);
