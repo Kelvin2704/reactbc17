@@ -1,18 +1,66 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 class TableNguoiDung extends Component {
+  state = {
+    sortBy: "taiKhoan",
+  };
+  handleSort = (name) => {
+    this.setState({
+      sortBy: name,
+    });
+  };
   render() {
+    let { mangNguoiDung } = this.props;
+    mangNguoiDung = _.sortBy(mangNguoiDung, [this.state.sortBy]); //'taiKhoan : this.state.sortBy
+    console.log(this.props);
     return (
       <table className="table">
         <thead className="bg-dark text-white font-weight-bold">
           <tr>
-            <th>Tài khoản</th>
-            <th>Họ Tên</th>
-            <th>Mật khẩu</th>
-            <th>Email</th>
-            <th>Số điện thoại</th>
-            <th>Loại người dùng</th>
+            <th
+              onClick={() => {
+                this.handleSort("taiKhoan");
+              }}
+            >
+              Tài khoản
+            </th>
+            <th
+              onClick={() => {
+                this.handleSort("hoTen");
+              }}
+            >
+              Họ Tên
+            </th>
+            <th
+              onClick={() => {
+                this.handleSort("matKhau");
+              }}
+            >
+              Mật khẩu
+            </th>
+            <th
+              onClick={() => {
+                this.handleSort("email");
+              }}
+            >
+              Email
+            </th>
+            <th
+              onClick={() => {
+                this.handleSort("soDienThoai");
+              }}
+            >
+              Số điện thoại
+            </th>
+            <th
+              onClick={() => {
+                this.handleSort("loaiNguoiDung");
+              }}
+            >
+              Loại người dùng
+            </th>
             <th></th>
           </tr>
         </thead>
