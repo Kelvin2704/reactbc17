@@ -9,6 +9,8 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import HookUseState from "./pages/ReactHook/HookUseState/HookUseState";
+import ReduxHook from "./pages/ReactHook/ReduxHook/ReduxHook";
+import ToDoListHook from "./pages/ReactHook/ReduxHook/ToDoListHook/ToDoListHook";
 import UseCallbackDemo from "./pages/ReactHook/UseCallback/UseCallbackDemo";
 import UseEffect from "./pages/ReactHook/UseEffect/UseEffect";
 import UseMemoDemo from "./pages/ReactHook/UseMemo/UseMemoDemo";
@@ -48,6 +50,8 @@ function App() {
         <Route exact path={"/usecallback"} component={UseCallbackDemo} />
         <Route exact path={"/usememo"} component={UseMemoDemo} />
         <Route exact path={"/useref"} component={UseRefDemo} />
+        <Route exact path={"/reduxhook"} component={ReduxHook} />
+        <Route exact path={"/todolisthook"} component={ToDoListHook} />
 
         <Route exact path={""} component={Home} />
       </Switch>

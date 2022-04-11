@@ -69,6 +69,12 @@ export default class HeaderHome extends Component {
                 <NavLink className="dropdown-item" to="/useref">
                   UseRef
                 </NavLink>
+                <NavLink className="dropdown-item" to="/reduxhook">
+                  Redux Hook
+                </NavLink>
+                <NavLink className="dropdown-item" to="/todolisthook">
+                  ToDoListHook
+                </NavLink>
               </div>
             </li>
           </ul>

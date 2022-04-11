@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { getApiArrTaskAction } from "../../../redux/actions/toDoListActions";
 
 export default class ToDoApp extends Component {
   state = {
@@ -7,6 +8,7 @@ export default class ToDoApp extends Component {
   };
 
   getTaskApi = () => {
+    // this.props.dispatch(getApiArrTaskAction);
     let promise = axios({
       url: "http://svcy.myclass.vn/api/ToDoList/GetAllTask",
       method: "GET",
@@ -23,9 +25,9 @@ export default class ToDoApp extends Component {
       console.log(error);
     });
   };
-  componentDidMount(){
-      //ham lifecycle nay se chay sau khi render dc thuc hien
-      this.getTaskApi()
+  componentDidMount() {
+    //ham lifecycle nay se chay sau khi render dc thuc hien
+    this.getTaskApi();
   }
   render() {
     return (
@@ -63,8 +65,8 @@ export default class ToDoApp extends Component {
                     })}
                 </tbody>
                 <tfoot>
-                    {/* cac viec chua lam */}
-                    {this.state.arrTask
+                  {/* cac viec chua lam */}
+                  {this.state.arrTask
                     .filter((task) => task.status === false)
                     .map((task, index) => {
                       return (
