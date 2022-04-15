@@ -6,6 +6,8 @@ import AdminIndex from "./pages/Admin/AdminIndex/AdminIndex";
 import ToDoApp from "./pages/Axios/ToDoApp/ToDoApp";
 import Contact from "./pages/Contact/Contact";
 import Detail from "./pages/Detail/Detail";
+import DemoHOC from "./pages/HOC/DemoHOC/DemoHOC";
+import ModalHOC from "./pages/HOC/DemoHOC/ModalHOC";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import HookUseState from "./pages/ReactHook/HookUseState/HookUseState";
@@ -18,6 +20,7 @@ import UseMemDemo from "./pages/ReactHook/UseMemo/UseMemoDemo";
 import UseRefDemo from "./pages/ReactHook/UseRef/UseRefDemo";
 import Register from "./pages/Register/Register";
 import BaiTapQuanLyNguoiDung from "./ReactForm/BaiTapQuanLyNguoiDung/BaiTapQuanLyNguoiDung";
+import HomeTemplate from "./Templates/HomeTemplate/HomeTemplate";
 
 function App() {
   return (
@@ -25,9 +28,10 @@ function App() {
     //   <BaiTapQuanLyNguoiDung/>
     // </div>
     <BrowserRouter>
-      <HeaderHome />
+      {/* <HeaderHome /> */}
+      <ModalHOC />
       <Switch>
-        <Route
+        {/* <Route
           exact
           path={"/home"}
           render={(propsRoute) => {
@@ -37,7 +41,9 @@ function App() {
               </div>
             );
           }}
-        />
+        /> */}
+        <HomeTemplate path="/home" component={Home} />
+        <HomeTemplate path="/about" component={About} />
         <Route exact path={"/contact"} component={Contact} />
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/register"} component={Register} />
@@ -52,6 +58,7 @@ function App() {
         <Route exact path={"/useref"} component={UseRefDemo} />
         <Route exact path={"/reduxhook"} component={ReduxHook} />
         <Route exact path={"/todolisthook"} component={ToDoListHook} />
+        <Route exact path={"/demohoc"} component={DemoHOC} />
 
         <Route exact path={""} component={Home} />
       </Switch>

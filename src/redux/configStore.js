@@ -5,6 +5,7 @@ import { gioHangReducer } from "./reducer/GioHangReducer";
 import { quanLyNguoiDungReducer } from "./reducer/quanLyNguoiDungReducer";
 import { toDoListReducer } from "./reducer/ToDoListReducer";
 import thunk from "redux-thunk";
+import { modalReducer } from "./reducer/ModalReducer";
 
 // import { gioHangReducer } from "./reducer/GioHangReducer";
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   quanLyNguoiDungReducer: quanLyNguoiDungReducer,
   faceBookReducer,
   toDoListReducer,
+  modalReducer,
 });
 // cấu hình thunk
 const middleWare = applyMiddleware(thunk);
